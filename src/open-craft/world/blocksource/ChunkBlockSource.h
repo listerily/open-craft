@@ -1,0 +1,11 @@
+#ifndef OPEN_CRAFT_CHUNK_BLOCK_SOURCE_H
+#define OPEN_CRAFT_CHUNK_BLOCK_SOURCE_H
+
+
+class ChunkBlockSource
+{
+
+};
+
+
+#endif //OPEN_CRAFT_CHUNK_BLOCK_SOURCE_H

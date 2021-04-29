@@ -1,0 +1,11 @@
+#ifndef OPEN_CRAFT_WORLD_DATA_BASE_H
+#define OPEN_CRAFT_WORLD_DATA_BASE_H
+
+
+class WorldDataBase
+{
+
+};
+
+
+#endif //OPEN_CRAFT_WORLD_DATA_BASE_H

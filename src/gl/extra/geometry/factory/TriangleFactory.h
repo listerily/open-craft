@@ -1,0 +1,11 @@
+#ifndef GL_EXTRA_TRIANGLE_FACTORY_H
+#define GL_EXTRA_TRIANGLE_FACTORY_H
+
+
+class TriangleFactory
+{
+
+};
+
+
+#endif //GL_EXTRA_TRIANGLE_FACTORY_H

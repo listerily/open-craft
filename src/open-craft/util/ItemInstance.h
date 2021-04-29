@@ -1,0 +1,11 @@
+#ifndef OPEN_CRAFT_ITEM_INSTANCE_H
+#define OPEN_CRAFT_ITEM_INSTANCE_H
+
+
+class ItemInstance
+{
+
+};
+
+
+#endif //OPEN_CRAFT_ITEM_INSTANCE_H

@@ -1,0 +1,11 @@
+#ifndef OPEN_CRAFT_WORLD_BLOCK_SOURCE_H
+#define OPEN_CRAFT_WORLD_BLOCK_SOURCE_H
+
+
+class WorldBlockSource
+{
+
+};
+
+
+#endif //OPEN_CRAFT_WORLD_BLOCK_SOURCE_H
