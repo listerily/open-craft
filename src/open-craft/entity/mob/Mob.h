@@ -1,10 +1,14 @@
 #ifndef OPEN_CRAFT_MOB_H
 #define OPEN_CRAFT_MOB_H
 
+#include "../Entity.h"
 
-class Mob
+class World;
+class Mob : public Entity
 {
-
+public:
+    Mob(std::string id, World&);
+    ~Mob() override;
 };
 
 

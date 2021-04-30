@@ -1,5 +1,5 @@
-#ifndef DEMOGL_MAIN_H
-#define DEMOGL_MAIN_H
+#ifndef OPEN_CRAFT_MAINAPPLICATION_H
+#define OPEN_CRAFT_MAINAPPLICATION_H
 
 #include <string>
 #include <memory>
@@ -22,8 +22,9 @@ namespace gl
         class GraphicsProgram;
     }
 }
-
-class Main
+class RenderEngine;
+class OpenCraftClient;
+class MainApplication
 {
 private:
     int windowWidth;
@@ -35,8 +36,8 @@ private:
     glm::vec3 cameraRight;
     float cameraSpeed;
     float mix_para;
-    std::shared_ptr<gl::Texture> texture1;
-    std::shared_ptr<gl::Texture> texture2;
+    gl::Texture* texture1;
+    gl::Texture* texture2;
     std::shared_ptr<gl::extra::GraphicsProgram> program;
     std::shared_ptr<gl::extra::VertexArrayWithBuffer> vertexArray;
     GLFWwindow *windowInstance;
@@ -44,17 +45,18 @@ private:
     bool windowHasEverGotFocus;
     float yaw, pitch;
     float sensitivity;
-public:
-    Main();
 
-    ~Main();
+    RenderEngine* renderEngine;
+    OpenCraftClient* openCraftClient;
+public:
+    MainApplication();
+
+    ~MainApplication();
 
 private:
     void processInput();
 
     void prepareTriangleProgram();
-
-    static std::shared_ptr<gl::Texture> generateTexture(std::string const &path);
 
     void makeVertexArrayObject();
 
@@ -84,4 +86,4 @@ public:
     void mouse_callback(GLFWwindow *, double, double);
 };
 
-#endif //DEMOGL_MAIN_H
+#endif //OPEN_CRAFT_MAINAPPLICATION_H

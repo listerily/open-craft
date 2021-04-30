@@ -12,8 +12,6 @@ namespace gl
     {
     private:
         unsigned int arrayID;
-        BufferObject *vertexBuffer = nullptr;
-        BufferObject *elementBuffer = nullptr;
         int count;
     public:
         VertexArrayObject &bindBuffer(BufferObject &buffer);

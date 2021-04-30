@@ -1,11 +1,11 @@
-#include "Main.h"
+#include "MainApplication.h"
 
 #include <iostream>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-Main app;
+MainApplication app;
 void framebuffer_size_callback(GLFWwindow * w, int x, int y)
 {
     app.framebuffer_size_callback(w, x, y);
@@ -51,9 +51,9 @@ int main(int argc, char **argv)
 
         glEnable(GL_DEPTH_TEST);
 
-//        glEnable(GL_CULL_FACE);
-//        glCullFace(GL_BACK);
-//        glFrontFace(GL_CW);
+        glEnable(GL_CULL_FACE);
+        glCullFace(GL_BACK);
+        glFrontFace(GL_CW);
 
         while (!glfwWindowShouldClose(window))
         {

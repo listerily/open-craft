@@ -1,5 +1,8 @@
-//
-// Created by listerily on 4/27/21.
-//
-
 #include "RenderLayer.h"
+
+RenderLayer::RenderLayer(RenderEngine& engine): engine(engine)
+{
+
+}
+
+RenderLayer::~RenderLayer() = default;

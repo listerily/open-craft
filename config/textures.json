@@ -1,0 +1,45 @@
+{
+  "name": "texture_config",
+  "data": [
+    {
+      "id": "texture/block/brick",
+      "path": "../texture/blocks/brick.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/blue_ice",
+      "path": "../texture/blocks/blue_ice.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/cake_top",
+      "path": "../texture/blocks/cake_top.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/clay",
+      "path": "../texture/blocks/clay.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/dirt",
+      "path": "../texture/blocks/dirt.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/grass_carried",
+      "path": "../texture/blocks/grass_carried.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/grass_side_carried",
+      "path": "../texture/blocks/grass_side_carried.png",
+      "format": "rgba"
+    },
+    {
+      "id": "texture/block/stone",
+      "path": "../texture/blocks/stone.png",
+      "format": "rgba"
+    }
+  ]
+}

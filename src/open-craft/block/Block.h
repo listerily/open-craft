@@ -3,13 +3,21 @@
 
 #include <string>
 
+class BlockMannager;
 class Block
 {
-private:
-    std::string id;
-    std::string name;
+protected:
+    const std::string id;
 public:
-
+    Block(BlockMannager&, std::string id);
+    virtual ~Block();
+    virtual bool isDestroyable() const;
+    virtual bool isSolid() const;
+    virtual bool isVisible() const;
+    virtual std::string getTessellationModelID() const;
+    virtual std::string getDisplayName() const;
+    virtual std::string getID() const;
+    virtual std::string getDescription() const;
 };
 
 

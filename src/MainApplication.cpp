@@ -1,4 +1,4 @@
-#include "Main.h"
+#include "MainApplication.h"
 
 #include <iostream>
 #include <thread>
@@ -25,12 +25,20 @@
 
 #include "stb_image.h"
 
+#include "open-craft/client/OpenCraftClient.h"
+#include "open-craft/renderer/RenderEngine.h"
+#include "open-craft/renderer/texture/TextureManager.h"
+
 using namespace gl;
 using namespace gl::extra;
 
-Main::~Main() = default;
+MainApplication::~MainApplication()
+{
+    delete renderEngine;
+    delete openCraftClient;
+}
 
-Main::Main() : windowTitle("Boxes")
+MainApplication::MainApplication() : windowTitle("OpenCraft")
 {
     cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
     cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -48,7 +56,7 @@ Main::Main() : windowTitle("Boxes")
     pitch = 0.0f;
 }
 
-void Main::processInput()
+void MainApplication::processInput()
 {
     if (glfwGetKey(windowInstance, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(windowInstance, true);
@@ -74,28 +82,28 @@ void Main::processInput()
     generateCameraVectors();
 }
 
-std::shared_ptr<Texture> Main::generateTexture(const std::string &path)
-{
-    int width, height, nrChannels;
-    stbi_set_flip_vertically_on_load(true);
-    unsigned char *data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
-    auto texture = std::make_shared<Texture>(Texture::TextureType::DIM2);
-    texture->setFilterMode(Texture::FilterType::MINIFYING,
-                           Texture::FilterMode::NEAREST)
-            .setFilterMode(Texture::FilterType::MAGNIFYING,
-                           Texture::FilterMode::NEAREST)
-            .setTextureImage2D(0, Texture::FormatType::RGBA, width, height,
-                               Texture::FormatType::RGBA,
-                               TypeEnum::UNSIGNED_BYTE, data)
-            .generateMipmap()
-            .setWrappingMode(Texture::AxisType::S, Texture::WrappingMode::REPEAT)
-            .setWrappingMode(Texture::AxisType::T, Texture::WrappingMode::REPEAT);
+//std::shared_ptr<Texture> MainApplication::generateTexture(const std::string &path)
+//{
+//    int width, height, nrChannels;
+//    stbi_set_flip_vertically_on_load(true);
+//    unsigned char *data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
+//    auto texture = std::make_shared<Texture>(Texture::TextureType::DIM2);
+//    texture->setFilterMode(Texture::FilterType::MINIFYING,
+//                           Texture::FilterMode::NEAREST)
+//            .setFilterMode(Texture::FilterType::MAGNIFYING,
+//                           Texture::FilterMode::NEAREST)
+//            .setTextureImage2D(0, Texture::FormatType::RGBA, width, height,
+//                               Texture::FormatType::RGBA,
+//                               TypeEnum::UNSIGNED_BYTE, data)
+//            .generateMipmap()
+//            .setWrappingMode(Texture::AxisType::S, Texture::WrappingMode::REPEAT)
+//            .setWrappingMode(Texture::AxisType::T, Texture::WrappingMode::REPEAT);
+//
+//    stbi_image_free(data);
+//    return texture;
+//}
 
-    stbi_image_free(data);
-    return texture;
-}
-
-void Main::prepareTriangleProgram()
+void MainApplication::prepareTriangleProgram()
 {
     std::stringstream vertexShaderSource;
     vertexShaderSource << std::ifstream("../shader/vertex.shader").rdbuf();
@@ -119,7 +127,7 @@ void Main::prepareTriangleProgram()
     //TODO: shared_ptr to bare instance
 }
 
-void Main::makeVertexArrayObject()
+void MainApplication::makeVertexArrayObject()
 {
     std::array<float, 180> vertices = {
             -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
@@ -189,8 +197,13 @@ void Main::makeVertexArrayObject()
                                                             5 * sizeof(float), 3 * sizeof(float));
 }
 
-void Main::renderGraphics()
+void MainApplication::renderGraphics()
 {
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    renderEngine->renderTick();
+
     static const std::array<glm::vec3, 9> positions = {
             glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(1.0f, 0.0f, 0.0f),
@@ -202,9 +215,6 @@ void Main::renderGraphics()
             glm::vec3(-1.0f, 0.0f, 1.0f),
             glm::vec3(1.0f, 0.0f, -1.0f),
     };
-
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     program->uniform("mixd", mix_para);
 
@@ -227,59 +237,64 @@ void Main::renderGraphics()
     }
 }
 
-void Main::renderLoop()
+void MainApplication::renderLoop()
 {
     renderGraphics();
 }
 
-void Main::initialize(GLFWwindow *window)
+void MainApplication::initialize(GLFWwindow *window)
 {
-    texture1 = generateTexture("../texture/blocks/stone.png");
-    texture2 = generateTexture("../texture/blocks/diamond_ore.png");
+    openCraftClient = new OpenCraftClient(*this);
+    renderEngine = new RenderEngine(*this);
+
+    renderEngine->initialize();
+
+    texture1 = renderEngine->getTextureManager().getTextureFor("texture/block/clay");
+    texture2 = renderEngine->getTextureManager().getTextureFor("texture/block/stone");
 
     prepareTriangleProgram();
     makeVertexArrayObject();
     windowInstance = window;
 }
 
-int Main::getWindowWidth() const
+int MainApplication::getWindowWidth() const
 {
     return windowWidth;
 }
 
-int Main::getWindowHeight() const
+int MainApplication::getWindowHeight() const
 {
     return windowHeight;
 }
 
-void Main::framebuffer_size_callback(GLFWwindow *window, int width, int height)
+void MainApplication::framebuffer_size_callback(GLFWwindow *window, int width, int height)
 {
     glViewport(0, 0, width, height);
     windowWidth = width;
     windowHeight = height;
 }
 
-void Main::beforeRenderLoop()
+void MainApplication::beforeRenderLoop()
 {
     processInput();
 }
 
-void Main::afterRenderLoop()
+void MainApplication::afterRenderLoop()
 {
 
 }
 
-std::string Main::getTitle() const
+std::string MainApplication::getTitle() const
 {
     return windowTitle;
 }
 
-void Main::mouse_callback(GLFWwindow *window, double xPos, double yPos)
+void MainApplication::mouse_callback(GLFWwindow *window, double xPos, double yPos)
 {
     mouseEvent(xPos, yPos);
 }
 
-void Main::mouseEvent(double x, double y)
+void MainApplication::mouseEvent(double x, double y)
 {
     if (!windowHasEverGotFocus)
     {
@@ -313,7 +328,7 @@ void Main::mouseEvent(double x, double y)
     generateCameraVectors();
 }
 
-void Main::generateCameraVectors()
+void MainApplication::generateCameraVectors()
 {
     glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
     glm::vec3 cameraDirection = cameraFront;

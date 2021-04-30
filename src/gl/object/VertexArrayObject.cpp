@@ -9,8 +9,6 @@ namespace gl
         arrayID = 0;
         glGenVertexArrays(1, &arrayID);
         this->count = count;
-        vertexBuffer = nullptr;
-        elementBuffer = nullptr;
     }
 
     VertexArrayObject::~VertexArrayObject()
@@ -45,15 +43,6 @@ namespace gl
         }
         glBindVertexArray(arrayID);
         glBindBuffer(glBufferType, buffer.bufferID);
-        switch (buffer.type)
-        {
-            case BufferObject::BufferType::VERTEX:
-                vertexBuffer = &buffer;
-                break;
-            case BufferObject::BufferType::ELEMENT:
-                elementBuffer = &buffer;
-                break;
-        }
         return *this;
     }
 

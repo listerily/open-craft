@@ -3,12 +3,17 @@
 
 class Player;
 class WorldBlockSource;
-
+class OpenCraftClient;
 class World
 {
 private:
-
+    OpenCraftClient& client;
+    Player* player;
+    WorldBlockSource* worldBlockSource;
 public:
+    explicit World(OpenCraftClient&);
+    ~World();
+
     const Player& getPlayer() const;
     Player& getPlayer();
     const WorldBlockSource& getWorldBlockSource() const;

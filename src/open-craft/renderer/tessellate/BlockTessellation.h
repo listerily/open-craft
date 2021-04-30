@@ -1,0 +1,11 @@
+#ifndef DRAFT_CRAFT_BLOCK_TESSELLATION_H
+#define DRAFT_CRAFT_BLOCK_TESSELLATION_H
+
+
+class BlockTessellation
+{
+
+};
+
+
+#endif //DRAFT_CRAFT_BLOCK_TESSELLATION_H

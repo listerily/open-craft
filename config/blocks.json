@@ -1,0 +1,9 @@
+{
+  "name": "block_config",
+  "data": [
+    {
+      "id": "block/stone",
+      "solid": true
+    }
+  ]
+}
