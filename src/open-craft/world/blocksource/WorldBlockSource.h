@@ -17,6 +17,8 @@ public:
     Block& getBlockAt(Vec3 const&) const;
     void setBlockAt(int, int, int);
     void setBlockAt(Vec3 const&);
+
+    void tick();
 };
 
 

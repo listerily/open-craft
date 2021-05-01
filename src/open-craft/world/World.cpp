@@ -2,6 +2,7 @@
 
 #include "../entity/mob/player/Player.h"
 #include "blocksource/WorldBlockSource.h"
+#include "../client/OpenCraftClient.h"
 
 const Player &World::getPlayer() const
 {
@@ -37,4 +38,9 @@ World::World(OpenCraftClient & client) : client(client)
 World::~World()
 {
     delete player;
+}
+
+const BlockManager &World::getBlockManager() const
+{
+    return *client.getBlockManager();
 }

@@ -4,6 +4,7 @@
 class Player;
 class WorldBlockSource;
 class OpenCraftClient;
+class BlockManager;
 class World
 {
 private:
@@ -18,7 +19,10 @@ public:
     Player& getPlayer();
     const WorldBlockSource& getWorldBlockSource() const;
     WorldBlockSource& getWorldBlockSource();
+
     void tick();
+
+    const BlockManager& getBlockManager() const;
 };
 
 

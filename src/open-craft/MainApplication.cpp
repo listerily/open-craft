@@ -25,9 +25,10 @@
 
 #include "stb_image.h"
 
-#include "open-craft/client/OpenCraftClient.h"
-#include "open-craft/renderer/RenderEngine.h"
-#include "open-craft/renderer/texture/TextureManager.h"
+#include "client/OpenCraftClient.h"
+#include "renderer/RenderEngine.h"
+#include "renderer/texture/TextureManager.h"
+#include "GameThreadHandler.h"
 
 using namespace gl;
 using namespace gl::extra;
@@ -81,27 +82,6 @@ void MainApplication::processInput()
 
     generateCameraVectors();
 }
-
-//std::shared_ptr<Texture> MainApplication::generateTexture(const std::string &path)
-//{
-//    int width, height, nrChannels;
-//    stbi_set_flip_vertically_on_load(true);
-//    unsigned char *data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
-//    auto texture = std::make_shared<Texture>(Texture::TextureType::DIM2);
-//    texture->setFilterMode(Texture::FilterType::MINIFYING,
-//                           Texture::FilterMode::NEAREST)
-//            .setFilterMode(Texture::FilterType::MAGNIFYING,
-//                           Texture::FilterMode::NEAREST)
-//            .setTextureImage2D(0, Texture::FormatType::RGBA, width, height,
-//                               Texture::FormatType::RGBA,
-//                               TypeEnum::UNSIGNED_BYTE, data)
-//            .generateMipmap()
-//            .setWrappingMode(Texture::AxisType::S, Texture::WrappingMode::REPEAT)
-//            .setWrappingMode(Texture::AxisType::T, Texture::WrappingMode::REPEAT);
-//
-//    stbi_image_free(data);
-//    return texture;
-//}
 
 void MainApplication::prepareTriangleProgram()
 {
@@ -237,17 +217,26 @@ void MainApplication::renderGraphics()
     }
 }
 
-void MainApplication::renderLoop()
+void MainApplication::render()
 {
+    threadHandler->renderTick();
     renderGraphics();
 }
 
 void MainApplication::initialize(GLFWwindow *window)
 {
+    //Initialize Game Client
     openCraftClient = new OpenCraftClient(*this);
+    openCraftClient->initialize();
+    openCraftClient->createWorld();
+
+    //Initialize Game Render Engine
     renderEngine = new RenderEngine(*this);
 
     renderEngine->initialize();
+
+    //Initialize Thread Handler
+    threadHandler = new GameThreadHandler(*openCraftClient, *renderEngine);
 
     texture1 = renderEngine->getTextureManager().getTextureFor("texture/block/clay");
     texture2 = renderEngine->getTextureManager().getTextureFor("texture/block/stone");
@@ -274,12 +263,12 @@ void MainApplication::framebuffer_size_callback(GLFWwindow *window, int width, i
     windowHeight = height;
 }
 
-void MainApplication::beforeRenderLoop()
+void MainApplication::beforeRendering()
 {
     processInput();
 }
 
-void MainApplication::afterRenderLoop()
+void MainApplication::afterRendering()
 {
 
 }
@@ -334,4 +323,14 @@ void MainApplication::generateCameraVectors()
     glm::vec3 cameraDirection = cameraFront;
     cameraRight = glm::normalize(glm::cross(up, cameraDirection));
     cameraUp = glm::cross(cameraDirection, cameraRight);
+}
+
+void MainApplication::beforeLooping()
+{
+    threadHandler->startGameTicking();
+}
+
+void MainApplication::afterLooping()
+{
+
 }

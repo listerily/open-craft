@@ -4,19 +4,25 @@
 class World;
 class Player;
 class MainApplication;
+class BlockManager;
 
 class OpenCraftClient
 {
 private:
     MainApplication& main;
     World* world;
-    Player* player;
+    BlockManager* blockManager;
 public:
     explicit OpenCraftClient(MainApplication&);
     ~OpenCraftClient();
 public:
+    void initialize();
     void createWorld();
     void tick();
+
+    World* getWorld() const;
+
+    BlockManager *getBlockManager() const;
 };
 
 

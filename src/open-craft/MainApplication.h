@@ -1,5 +1,5 @@
-#ifndef OPEN_CRAFT_MAINAPPLICATION_H
-#define OPEN_CRAFT_MAINAPPLICATION_H
+#ifndef OPEN_CRAFT_MAIN_APPLICATION_H
+#define OPEN_CRAFT_MAIN_APPLICATION_H
 
 #include <string>
 #include <memory>
@@ -24,6 +24,7 @@ namespace gl
 }
 class RenderEngine;
 class OpenCraftClient;
+class GameThreadHandler;
 class MainApplication
 {
 private:
@@ -48,6 +49,7 @@ private:
 
     RenderEngine* renderEngine;
     OpenCraftClient* openCraftClient;
+    GameThreadHandler* threadHandler;
 public:
     MainApplication();
 
@@ -65,11 +67,15 @@ private:
     void generateCameraVectors();
 
 public:
-    void beforeRenderLoop();
+    void beforeRendering();
 
-    void afterRenderLoop();
+    void afterRendering();
 
-    void renderLoop();
+    void beforeLooping();
+
+    void afterLooping();
+
+    void render();
 
     void initialize(GLFWwindow *);
 
@@ -86,4 +92,4 @@ public:
     void mouse_callback(GLFWwindow *, double, double);
 };
 
-#endif //OPEN_CRAFT_MAINAPPLICATION_H
+#endif //OPEN_CRAFT_MAIN_APPLICATION_H
