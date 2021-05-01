@@ -17,8 +17,9 @@ public:
     void setP1(Vec3 const& p) { p1 = p;}
     void setP2(Vec3 const& p) { p2 = p;}
 
-    bool collide(AABB const&) const;
-    bool collide(AABB const&, Vec3 const&) const;
+    bool collideWith(AABB const&) const;
+    bool collideWith(AABB const&, Vec3 const&) const;
+    bool in(Vec3 const&) const;
 };
 
 
