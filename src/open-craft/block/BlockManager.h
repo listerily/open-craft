@@ -4,17 +4,17 @@
 #include <string>
 #include <unordered_map>
 
-class OpenCraftClient;
+class OpenCraftGame;
 
 class Block;
 
 class BlockManager
 {
 private:
-    OpenCraftClient &openCraftClient;
+    OpenCraftGame &game;
     std::unordered_map<std::string, Block *> lookupMap;
 public:
-    explicit BlockManager(OpenCraftClient &);
+    explicit BlockManager(OpenCraftGame &);
 
     ~BlockManager();
 

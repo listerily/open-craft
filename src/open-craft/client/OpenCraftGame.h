@@ -1,5 +1,5 @@
-#ifndef OPEN_CRAFT_OPEN_CRAFT_CLIENT_H
-#define OPEN_CRAFT_OPEN_CRAFT_CLIENT_H
+#ifndef OPEN_CRAFT_OPEN_CRAFT_GAME_H
+#define OPEN_CRAFT_OPEN_CRAFT_GAME_H
 
 class World;
 
@@ -9,16 +9,16 @@ class MainApplication;
 
 class BlockManager;
 
-class OpenCraftClient
+class OpenCraftGame
 {
 private:
     MainApplication &main;
     World *world;
     BlockManager *blockManager;
 public:
-    explicit OpenCraftClient(MainApplication &);
+    explicit OpenCraftGame(MainApplication &);
 
-    ~OpenCraftClient();
+    ~OpenCraftGame();
 
 public:
     void initialize();
@@ -33,4 +33,4 @@ public:
 };
 
 
-#endif //OPEN_CRAFT_OPEN_CRAFT_CLIENT_H
+#endif //OPEN_CRAFT_OPEN_CRAFT_GAME_H

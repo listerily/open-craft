@@ -14,7 +14,9 @@ class WorldRenderLayer : public RenderLayer
 {
 private:
     World &world;
-    std::unordered_map<unsigned long long, BlockTessellationCache *> chunkTTCache;
+    std::unordered_map<unsigned long long, BlockTessellationCache *> chunkTessellationCache;
+private:
+
 public:
     WorldRenderLayer(RenderEngine &, World &);
 

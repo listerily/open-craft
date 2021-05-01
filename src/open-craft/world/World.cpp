@@ -2,7 +2,7 @@
 
 #include "../entity/mob/player/Player.h"
 #include "blocksource/WorldBlockSource.h"
-#include "../client/OpenCraftClient.h"
+#include "../client/OpenCraftGame.h"
 
 const Player &World::getPlayer() const
 {
@@ -29,7 +29,7 @@ void World::tick()
 
 }
 
-World::World(OpenCraftClient &client) : client(client)
+World::World(OpenCraftGame &client) : client(client)
 {
     player = new Player(*this);
     worldBlockSource = new WorldBlockSource(*this);

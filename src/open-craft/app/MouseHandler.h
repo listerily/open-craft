@@ -1,0 +1,11 @@
+#ifndef OPEN_CRAFT_MOUSEHANDLER_H
+#define OPEN_CRAFT_MOUSEHANDLER_H
+
+
+class MouseHandler
+{
+
+};
+
+
+#endif //OPEN_CRAFT_MOUSEHANDLER_H

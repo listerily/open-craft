@@ -1,9 +1,9 @@
 #include "GameThreadHandler.h"
 
 #include "renderer/RenderEngine.h"
-#include "client/OpenCraftClient.h"
+#include "client/OpenCraftGame.h"
 
-GameThreadHandler::GameThreadHandler(OpenCraftClient &client, RenderEngine &engine) : engine(engine), client(client)
+GameThreadHandler::GameThreadHandler(OpenCraftGame &client, RenderEngine &engine) : engine(engine), game(client)
 {
     ticker = new std::thread(&GameThreadHandler::gameTick, this);
 }
@@ -25,7 +25,7 @@ void GameThreadHandler::renderTick()
     while (true)
     {
         lock.lock();
-        client.tick();
+        game.tick();
         lock.unlock();
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }

@@ -5,18 +5,18 @@ class Player;
 
 class WorldBlockSource;
 
-class OpenCraftClient;
+class OpenCraftGame;
 
 class BlockManager;
 
 class World
 {
 private:
-    OpenCraftClient &client;
+    OpenCraftGame &client;
     Player *player;
     WorldBlockSource *worldBlockSource;
 public:
-    explicit World(OpenCraftClient &);
+    explicit World(OpenCraftGame &);
 
     ~World();
 

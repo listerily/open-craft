@@ -5,7 +5,7 @@
 #include "impl/AirBlock.h"
 #include "impl/StoneBlock.h"
 
-BlockManager::BlockManager(OpenCraftClient &client) : openCraftClient(client)
+BlockManager::BlockManager(OpenCraftGame &client) : game(client)
 {
 
 }

@@ -25,7 +25,7 @@ namespace gl
 }
 class RenderEngine;
 
-class OpenCraftClient;
+class OpenCraftGame;
 
 class GameThreadHandler;
 
@@ -35,16 +35,12 @@ private:
     int windowWidth;
     int windowHeight;
     const std::string windowTitle;
+
     glm::vec3 cameraFront;
     glm::vec3 cameraPos;
     glm::vec3 cameraUp;
     glm::vec3 cameraRight;
     float cameraSpeed;
-    float mix_para;
-    gl::Texture *texture1;
-    gl::Texture *texture2;
-    std::shared_ptr<gl::extra::GraphicsProgram> program;
-    std::shared_ptr<gl::extra::VertexArrayWithBuffer> vertexArray;
     GLFWwindow *windowInstance;
     double mouseX, mouseY;
     bool windowHasEverGotFocus;
@@ -52,7 +48,7 @@ private:
     float sensitivity;
 
     RenderEngine *renderEngine;
-    OpenCraftClient *openCraftClient;
+    OpenCraftGame *openCraftGame;
     GameThreadHandler *threadHandler;
 public:
     MainApplication();

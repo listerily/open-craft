@@ -4,14 +4,14 @@
 #include <thread>
 #include <mutex>
 
-class OpenCraftClient;
+class OpenCraftGame;
 
 class RenderEngine;
 
 class GameThreadHandler
 {
 private:
-    OpenCraftClient &client;
+    OpenCraftGame &game;
     RenderEngine &engine;
     std::thread *ticker;
     std::mutex lock;
@@ -19,7 +19,7 @@ private:
     [[noreturn]] void gameTick();
 
 public:
-    GameThreadHandler(OpenCraftClient &, RenderEngine &);
+    GameThreadHandler(OpenCraftGame &, RenderEngine &);
 
     ~GameThreadHandler();
 
