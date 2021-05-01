@@ -12,13 +12,20 @@ namespace gl::extra
         std::vector<float> data;
     public:
         CommonExtra();
+
         explicit CommonExtra(float);
+
         CommonExtra(float, float);
+
         CommonExtra(float, float, float);
+
         CommonExtra(float, float, float, float);
+
         CommonExtra(float, float, float, float, float);
+
         CommonExtra(float, float, float, float, float, float);
-        CommonExtra(float*, int size);
+
+        CommonExtra(float *, int size);
 
     public:
         float &operator[](int i) override;

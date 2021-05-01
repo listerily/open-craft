@@ -10,6 +10,7 @@ namespace gl::extra
         float x, y, z;
 
         Vertex();
+
         Vertex(float, float, float);
     };
 }

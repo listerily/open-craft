@@ -1,6 +1,6 @@
 #include "RenderLayer.h"
 
-RenderLayer::RenderLayer(RenderEngine& engine): engine(engine)
+RenderLayer::RenderLayer(RenderEngine &engine) : engine(engine)
 {
 
 }

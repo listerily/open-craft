@@ -5,14 +5,14 @@
 #include "impl/AirBlock.h"
 #include "impl/StoneBlock.h"
 
-BlockManager::BlockManager(OpenCraftClient & client) : openCraftClient(client)
+BlockManager::BlockManager(OpenCraftClient &client) : openCraftClient(client)
 {
 
 }
 
 BlockManager::~BlockManager()
 {
-    for(auto& block : lookupMap)
+    for (auto &block : lookupMap)
     {
         delete block.second;
         block.second = nullptr;
@@ -25,14 +25,14 @@ void BlockManager::initBlocks()
     registerBlock<StoneBlock>(*this);
 }
 
-Block *BlockManager::lookup(const std::string & id) const
+Block *BlockManager::lookup(const std::string &id) const
 {
     return lookupMap.at(id);
 }
 
 template<typename BlockType, typename...Args>
-void BlockManager::registerBlock(Args&&... args)
+void BlockManager::registerBlock(Args &&... args)
 {
-    auto* newBlock = new BlockType(args...);
+    auto *newBlock = new BlockType(args...);
     lookupMap[newBlock->getID()] = newBlock;
 }

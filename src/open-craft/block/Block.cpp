@@ -1,6 +1,6 @@
 #include "Block.h"
 
-Block::Block(BlockManager&, std::string id) : id(std::move(id))
+Block::Block(BlockManager &, std::string id) : id(std::move(id))
 {
 
 }

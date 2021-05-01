@@ -4,19 +4,28 @@
 #include <string>
 
 class BlockManager;
+
 class Block
 {
 protected:
     const std::string id;
 public:
-    Block(BlockManager&, std::string id);
+    Block(BlockManager &, std::string id);
+
     virtual ~Block();
+
     virtual bool isDestroyable() const;
+
     virtual bool isSolid() const;
+
     virtual bool isVisible() const;
+
     virtual std::string getTessellationModelID() const;
+
     virtual std::string getDisplayName() const;
+
     virtual std::string getID() const;
+
     virtual std::string getDescription() const;
 };
 

@@ -4,10 +4,12 @@
 #include "../Block.h"
 
 class BlockManager;
+
 class StoneBlock : public Block
 {
 public:
-    explicit StoneBlock(BlockManager&);
+    explicit StoneBlock(BlockManager &);
+
     ~StoneBlock() override;
 
     std::string getTessellationModelID() const override;

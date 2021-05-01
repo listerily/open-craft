@@ -4,7 +4,7 @@
 #include "render-layer/world/WorldRenderLayer.h"
 #include "tessellation-model/TessellationModelManager.h"
 
-RenderEngine::RenderEngine(MainApplication & main): main(main)
+RenderEngine::RenderEngine(MainApplication &main) : main(main)
 {
     worldLayer = nullptr;
     guiLayer = nullptr;
@@ -43,9 +43,9 @@ const RenderLayer &RenderEngine::getGuiLayer() const
 
 void RenderEngine::renderTick()
 {
-    if(worldLayer)
+    if (worldLayer)
         worldLayer->renderTick();
-    if(guiLayer)
+    if (guiLayer)
         guiLayer->renderTick();
 }
 
@@ -65,12 +65,12 @@ void RenderEngine::initialize()
     tessellationModelManager->initializeModels();
 }
 
-const TessellationModelManager & RenderEngine::getTessellationModelManager() const
+const TessellationModelManager &RenderEngine::getTessellationModelManager() const
 {
     return *tessellationModelManager;
 }
 
-TessellationModelManager & RenderEngine::getTessellationModelManager()
+TessellationModelManager &RenderEngine::getTessellationModelManager()
 {
     return *tessellationModelManager;
 }

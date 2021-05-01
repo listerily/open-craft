@@ -16,10 +16,15 @@ namespace gl::extra
         CommonExtra commonExtra[3];
     public:
         Triangle() = default;
+
         Triangle(float, float, float, float, float, float, float, float, float);
-        Triangle(Vertex const&, Vertex const&, Vertex const&);
+
+        Triangle(Vertex const &, Vertex const &, Vertex const &);
+
         Triangle(float, float, float, float, float, float, float, float, float, bool flipped);
-        Triangle(Vertex const&, Vertex const&, Vertex const&, bool flipped);
+
+        Triangle(Vertex const &, Vertex const &, Vertex const &, bool flipped);
+
     public:
 
         std::vector<VertexDataRef> getVerticesData() const override;

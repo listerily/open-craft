@@ -5,19 +5,26 @@
 #include <mutex>
 
 class OpenCraftClient;
+
 class RenderEngine;
+
 class GameThreadHandler
 {
 private:
-    OpenCraftClient& client;
-    RenderEngine& engine;
-    std::thread* ticker;
+    OpenCraftClient &client;
+    RenderEngine &engine;
+    std::thread *ticker;
     std::mutex lock;
+
     [[noreturn]] void gameTick();
+
 public:
-    GameThreadHandler(OpenCraftClient&, RenderEngine&);
+    GameThreadHandler(OpenCraftClient &, RenderEngine &);
+
     ~GameThreadHandler();
+
     void renderTick();
+
     void startGameTicking();
 };
 

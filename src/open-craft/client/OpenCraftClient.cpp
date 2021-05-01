@@ -4,7 +4,7 @@
 #include "../entity/mob/player/Player.h"
 #include "../block/BlockManager.h"
 
-OpenCraftClient::OpenCraftClient(MainApplication & main) : main(main)
+OpenCraftClient::OpenCraftClient(MainApplication &main) : main(main)
 {
     world = nullptr;
     blockManager = nullptr;
@@ -23,7 +23,7 @@ void OpenCraftClient::createWorld()
 
 void OpenCraftClient::tick()
 {
-    if(world)
+    if (world)
         world->tick();
 }
 

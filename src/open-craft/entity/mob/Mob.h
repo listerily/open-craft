@@ -4,10 +4,12 @@
 #include "../Entity.h"
 
 class World;
+
 class Mob : public Entity
 {
 public:
-    Mob(std::string id, World&);
+    Mob(std::string id, World &);
+
     ~Mob() override;
 };
 

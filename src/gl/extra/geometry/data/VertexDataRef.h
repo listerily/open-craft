@@ -12,13 +12,16 @@ namespace gl::extra
     class VertexDataRef
     {
     public:
-        const Vertex* vertex;
-        const TextureExtra* textureExtra;
-        const CommonExtra* commonExtra;
+        const Vertex *vertex;
+        const TextureExtra *textureExtra;
+        const CommonExtra *commonExtra;
     public:
         VertexDataRef(const Vertex &, const TextureExtra *, const CommonExtra *);
+
         VertexDataRef(const Vertex &, const CommonExtra *);
+
         VertexDataRef(const Vertex &, const TextureExtra *);
+
         VertexDataRef(const Vertex &);
     };
 }

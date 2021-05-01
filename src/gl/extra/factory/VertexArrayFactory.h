@@ -6,14 +6,16 @@
 namespace gl::extra
 {
     class Geometry;
+
     class VertexArrayWithBuffer;
 
     class VertexArrayFactory
     {
     private:
-        Geometry const& geometry;
+        Geometry const &geometry;
     public:
-        explicit VertexArrayFactory(Geometry const&);
+        explicit VertexArrayFactory(Geometry const &);
+
     public:
         std::shared_ptr<VertexArrayWithBuffer> getWithBuffer() const;
     };

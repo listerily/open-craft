@@ -5,13 +5,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-static MainApplication* app;
-void framebuffer_size_callback(GLFWwindow * w, int x, int y)
+static MainApplication *app;
+
+void framebuffer_size_callback(GLFWwindow *w, int x, int y)
 {
     app->framebuffer_size_callback(w, x, y);
 }
 
-void mouse_callback(GLFWwindow * w, double x, double y)
+void mouse_callback(GLFWwindow *w, double x, double y)
 {
     app->mouse_callback(w, x, y);
 }

@@ -8,7 +8,9 @@
 namespace gl
 {
     class UniformParameters;
+
     class Texture;
+
     class VertexArrayObject;
 }
 
@@ -19,27 +21,28 @@ namespace gl::extra
     {
     private:
         ShaderProgram p;
-        const VertexArrayObject* vertexSource = nullptr;
-        const Texture* textures[32] = {};
+        const VertexArrayObject *vertexSource = nullptr;
+        const Texture *textures[32] = {};
         int count = 0;
     public:
-        enum class DrawMode : int {
+        enum class DrawMode : int
+        {
             ARRAYS, ELEMENTS
         };
     public:
         GraphicsProgram();
 
-        GraphicsProgram(const GraphicsProgram&) = delete;
+        GraphicsProgram(const GraphicsProgram &) = delete;
 
-        void uniform(std::string const&, UniformParameters const&);
+        void uniform(std::string const &, UniformParameters const &);
 
-        ShaderProgram& program();
+        ShaderProgram &program();
 
-        ShaderProgram const& program() const;
+        ShaderProgram const &program() const;
 
-        void source(VertexArrayObject const&, int count);
+        void source(VertexArrayObject const &, int count);
 
-        void texture(Texture const&, int = 0);
+        void texture(Texture const &, int = 0);
 
         void draw(DrawMode);
     };

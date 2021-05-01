@@ -14,12 +14,16 @@ private:
     std::string id;
 public:
     explicit TessellationModel(std::string id, unsigned int size);
+
     ~TessellationModel();
 
-    std::string const& getID() const;
+    std::string const &getID() const;
+
     unsigned int size() const;
-    TessellationModelPart& getModelPart(unsigned int index) const;
-    void addModelPart(std::shared_ptr<TessellationModelPart>const&);
+
+    TessellationModelPart &getModelPart(unsigned int index) const;
+
+    void addModelPart(std::shared_ptr<TessellationModelPart> const &);
 };
 
 

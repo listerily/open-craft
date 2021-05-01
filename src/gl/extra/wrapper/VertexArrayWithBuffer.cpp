@@ -1,6 +1,6 @@
 #include "VertexArrayWithBuffer.h"
 
-void gl::extra::VertexArrayWithBuffer::bindBuffer(const std::shared_ptr<BufferObject> & bufferObject)
+void gl::extra::VertexArrayWithBuffer::bindBuffer(const std::shared_ptr<BufferObject> &bufferObject)
 {
     switch ((*bufferObject).getType())
     {

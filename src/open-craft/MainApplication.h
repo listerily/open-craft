@@ -19,12 +19,16 @@ namespace gl
     namespace extra
     {
         class VertexArrayWithBuffer;
+
         class GraphicsProgram;
     }
 }
 class RenderEngine;
+
 class OpenCraftClient;
+
 class GameThreadHandler;
+
 class MainApplication
 {
 private:
@@ -37,8 +41,8 @@ private:
     glm::vec3 cameraRight;
     float cameraSpeed;
     float mix_para;
-    gl::Texture* texture1;
-    gl::Texture* texture2;
+    gl::Texture *texture1;
+    gl::Texture *texture2;
     std::shared_ptr<gl::extra::GraphicsProgram> program;
     std::shared_ptr<gl::extra::VertexArrayWithBuffer> vertexArray;
     GLFWwindow *windowInstance;
@@ -47,9 +51,9 @@ private:
     float yaw, pitch;
     float sensitivity;
 
-    RenderEngine* renderEngine;
-    OpenCraftClient* openCraftClient;
-    GameThreadHandler* threadHandler;
+    RenderEngine *renderEngine;
+    OpenCraftClient *openCraftClient;
+    GameThreadHandler *threadHandler;
 public:
     MainApplication();
 

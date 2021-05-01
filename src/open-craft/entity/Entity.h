@@ -7,23 +7,30 @@
 #include "../util/Vec2.h"
 
 class World;
+
 class Entity
 {
 protected:
     const std::string id;
-    World& world;
+    World &world;
     Vec3 position;
     Vec2 facing;
 public:
-    Entity(std::string id, World&);
+    Entity(std::string id, World &);
+
     virtual ~Entity();
 
     virtual Vec3 getPos() const;
+
     virtual Vec2 getFacing() const;
-    virtual void travel(Vec3 const&);
-    virtual void turn(Vec2 const&);
-    virtual void travelTo(Vec3 const&);
-    virtual void turnTo(Vec2 const&);
+
+    virtual void travel(Vec3 const &);
+
+    virtual void turn(Vec2 const &);
+
+    virtual void travelTo(Vec3 const &);
+
+    virtual void turnTo(Vec2 const &);
 };
 
 

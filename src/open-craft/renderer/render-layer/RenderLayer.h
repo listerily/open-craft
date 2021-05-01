@@ -6,9 +6,10 @@ class RenderEngine;
 class RenderLayer
 {
 protected:
-    RenderEngine& engine;
+    RenderEngine &engine;
 public:
-    explicit RenderLayer(RenderEngine&);
+    explicit RenderLayer(RenderEngine &);
+
     ~RenderLayer();
 
     virtual void renderTick() = 0;

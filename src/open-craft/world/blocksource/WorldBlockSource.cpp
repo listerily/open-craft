@@ -4,7 +4,7 @@
 #include "util/Vec3.h"
 #include "world/World.h"
 
-WorldBlockSource::WorldBlockSource(World & world) : world(world)
+WorldBlockSource::WorldBlockSource(World &world) : world(world)
 {
 
 }
@@ -18,7 +18,7 @@ World &WorldBlockSource::getWorld() const
 
 Block &WorldBlockSource::getBlockAt(int, int y, int) const
 {
-    if(y < 5)
+    if (y < 5)
         return *world.getBlockManager().lookup("block/stone");
     return *world.getBlockManager().lookup("block/air");
 }

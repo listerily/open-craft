@@ -47,9 +47,9 @@ gl::extra::CommonExtra::CommonExtra(float f1, float f2, float f3, float f4, floa
     data = {f1, f2, f3, f4, f5, f6};
 }
 
-gl::extra::CommonExtra::CommonExtra(float * f, int size)
+gl::extra::CommonExtra::CommonExtra(float *f, int size)
 {
-    for(int i = 0; i < size; ++i)
+    for (int i = 0; i < size; ++i)
     {
         data.push_back(f[i]);
     }

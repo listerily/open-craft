@@ -3,7 +3,7 @@
 #include "renderer/RenderEngine.h"
 #include "client/OpenCraftClient.h"
 
-GameThreadHandler::GameThreadHandler(OpenCraftClient & client, RenderEngine & engine) : engine(engine), client(client)
+GameThreadHandler::GameThreadHandler(OpenCraftClient &client, RenderEngine &engine) : engine(engine), client(client)
 {
     ticker = new std::thread(&GameThreadHandler::gameTick, this);
 }
@@ -22,7 +22,7 @@ void GameThreadHandler::renderTick()
 
 [[noreturn]] void GameThreadHandler::gameTick()
 {
-    while(true)
+    while (true)
     {
         lock.lock();
         client.tick();

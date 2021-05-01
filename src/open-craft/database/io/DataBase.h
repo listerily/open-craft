@@ -3,12 +3,15 @@
 
 
 class DBReader;
+
 class DBWriter;
+
 class DataBase
 {
 public:
-    virtual void write(DBWriter&) = 0;
-    virtual void read(DBReader&) = 0;
+    virtual void write(DBWriter &) = 0;
+
+    virtual void read(DBReader &) = 0;
 };
 
 

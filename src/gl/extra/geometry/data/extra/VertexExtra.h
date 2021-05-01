@@ -9,8 +9,10 @@ namespace gl::extra
     {
     public:
         virtual int size() const;
-        virtual float& operator[](int i) = 0;
-        virtual float const& operator[](int i) const = 0;
+
+        virtual float &operator[](int i) = 0;
+
+        virtual float const &operator[](int i) const = 0;
     };
 }
 

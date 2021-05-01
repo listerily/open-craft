@@ -2,14 +2,14 @@
 
 float &gl::extra::TextureExtra::operator[](int i)
 {
-    if(i == 1)
+    if (i == 1)
         return v;
     return u;
 }
 
 const float &gl::extra::TextureExtra::operator[](int i) const
 {
-    if(i == 1)
+    if (i == 1)
         return v;
     return u;
 }

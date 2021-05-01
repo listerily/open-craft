@@ -7,18 +7,18 @@
 
 gl::extra::GraphicsProgram::GraphicsProgram() = default;
 
-void gl::extra::GraphicsProgram::uniform(const std::string & name, const gl::UniformParameters & value)
+void gl::extra::GraphicsProgram::uniform(const std::string &name, const gl::UniformParameters &value)
 {
     p.bindUniform(name, value);
 }
 
-void gl::extra::GraphicsProgram::source(const gl::VertexArrayObject & v, int c)
+void gl::extra::GraphicsProgram::source(const gl::VertexArrayObject &v, int c)
 {
     count = c;
     vertexSource = &v;
 }
 
-void gl::extra::GraphicsProgram::texture(const gl::Texture & texture, int id)
+void gl::extra::GraphicsProgram::texture(const gl::Texture &texture, int id)
 {
     textures[id] = &texture;
 }
@@ -43,9 +43,9 @@ void gl::extra::GraphicsProgram::draw(gl::extra::GraphicsProgram::DrawMode draw)
                     GL_TEXTURE21, GL_TEXTURE22, GL_TEXTURE23, GL_TEXTURE24, GL_TEXTURE25, GL_TEXTURE26, GL_TEXTURE27,
                     GL_TEXTURE28, GL_TEXTURE29, GL_TEXTURE30, GL_TEXTURE31
             };
-    for(int i = 0; i < 32; ++i)
+    for (int i = 0; i < 32; ++i)
     {
-        if(textures[i])
+        if (textures[i])
         {
             glActiveTexture(GL_TEXTURE_ID[i]);
             glBindTexture(GL_TEXTURE_2D, textures[i]->getTextureID());

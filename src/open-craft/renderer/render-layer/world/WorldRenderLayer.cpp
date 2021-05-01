@@ -5,7 +5,7 @@ void WorldRenderLayer::renderTick()
 
 }
 
-WorldRenderLayer::WorldRenderLayer(RenderEngine& engine, World & world): world(world), RenderLayer(engine)
+WorldRenderLayer::WorldRenderLayer(RenderEngine &engine, World &world) : world(world), RenderLayer(engine)
 {
 
 }

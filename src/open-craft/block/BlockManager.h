@@ -5,21 +5,26 @@
 #include <unordered_map>
 
 class OpenCraftClient;
+
 class Block;
+
 class BlockManager
 {
 private:
-    OpenCraftClient& openCraftClient;
-    std::unordered_map<std::string, Block*> lookupMap;
+    OpenCraftClient &openCraftClient;
+    std::unordered_map<std::string, Block *> lookupMap;
 public:
-    explicit BlockManager(OpenCraftClient&);
+    explicit BlockManager(OpenCraftClient &);
+
     ~BlockManager();
+
 public:
     void initBlocks();
-    Block* lookup(std::string const&) const;
+
+    Block *lookup(std::string const &) const;
 
     template<typename BlockType, typename ...Args>
-    void registerBlock(Args&&...);
+    void registerBlock(Args &&...);
 };
 
 

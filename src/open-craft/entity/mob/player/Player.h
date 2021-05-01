@@ -4,10 +4,12 @@
 #include "../Mob.h"
 
 class World;
+
 class Player : public Mob
 {
 public:
     explicit Player(World &world);
+
     ~Player() override;
 };
 

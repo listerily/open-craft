@@ -25,8 +25,7 @@ namespace gl
         {
             uniformLocation = glGetUniformLocation(programID, uniformName.c_str());
             uniformIDLookupMap[uniformName] = uniformLocation;
-        }
-        else
+        } else
         {
             uniformLocation = uniformIDLookupMap[uniformName];
         }

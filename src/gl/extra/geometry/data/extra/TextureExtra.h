@@ -16,7 +16,9 @@ namespace gl::extra
         };
     public:
         TextureExtra();
+
         TextureExtra(float, float);
+
         explicit TextureExtra(TextureExtra::Position);
 
         float &operator[](int i) override;

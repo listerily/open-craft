@@ -6,14 +6,15 @@
 #include "TessellationModel.h"
 
 class RenderEngine;
-namespace Json{class Value;}
+namespace Json { class Value; }
 class TessellationModelManager
 {
 private:
     RenderEngine &engine;
     std::unordered_map<std::string, TessellationModel *> models;
 private:
-    static void initializeModel(Json::Value const&, TessellationModel*);
+    static void initializeModel(Json::Value const &, TessellationModel *);
+
 public:
     explicit TessellationModelManager(RenderEngine &);
 

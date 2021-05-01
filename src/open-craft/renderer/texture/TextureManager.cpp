@@ -12,14 +12,14 @@ using namespace std;
 using namespace Json;
 using namespace gl;
 
-TextureManager::TextureManager(RenderEngine & engine): engine(engine)
+TextureManager::TextureManager(RenderEngine &engine) : engine(engine)
 {
 
 }
 
 TextureManager::~TextureManager()
 {
-    for(auto & texture : textures)
+    for (auto &texture : textures)
     {
         delete texture.second;
         texture.second = nullptr;
@@ -33,7 +33,7 @@ void TextureManager::initializeTextures()
     in >> root;
 
     unsigned int size = root["data"].size();
-    for(int i = 0; i < size; ++i)
+    for (int i = 0; i < size; ++i)
     {
         //Loading the texture
 
@@ -45,13 +45,13 @@ void TextureManager::initializeTextures()
         int width, height, nrChannels;
         stbi_set_flip_vertically_on_load(true);
         unsigned char *image_data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
-        auto* texture = new Texture(Texture::TextureType::DIM2);
+        auto *texture = new Texture(Texture::TextureType::DIM2);
         texture->setFilterMode(Texture::FilterType::MINIFYING, Texture::FilterMode::NEAREST);
         texture->setFilterMode(Texture::FilterType::MAGNIFYING, Texture::FilterMode::NEAREST);
         texture->setTextureImage2D(0,
-                                   format == "rgba"? Texture::FormatType::RGBA : Texture::FormatType::RGB,
+                                   format == "rgba" ? Texture::FormatType::RGBA : Texture::FormatType::RGB,
                                    width, height,
-                                   format == "rgba"? Texture::FormatType::RGBA : Texture::FormatType::RGB,
+                                   format == "rgba" ? Texture::FormatType::RGBA : Texture::FormatType::RGB,
                                    TypeEnum::UNSIGNED_BYTE, image_data);
         texture->generateMipmap();
         texture->setWrappingMode(Texture::AxisType::S, Texture::WrappingMode::REPEAT);
@@ -64,12 +64,12 @@ void TextureManager::initializeTextures()
 
 bool TextureManager::hasTextureFor(const std::string &name) const
 {
-    if(textures.count(name) == 0)
+    if (textures.count(name) == 0)
         return false;
     return textures.at(name) != nullptr;
 }
 
-gl::Texture* TextureManager::getTextureFor(const std::string &name) const
+gl::Texture *TextureManager::getTextureFor(const std::string &name) const
 {
     return textures.at(name);
 }

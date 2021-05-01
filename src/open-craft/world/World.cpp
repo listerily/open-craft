@@ -29,7 +29,7 @@ void World::tick()
 
 }
 
-World::World(OpenCraftClient & client) : client(client)
+World::World(OpenCraftClient &client) : client(client)
 {
     player = new Player(*this);
     worldBlockSource = new WorldBlockSource(*this);

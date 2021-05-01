@@ -7,15 +7,19 @@
 #include <unordered_map>
 
 class World;
+
 class BlockTessellationCache;
+
 class WorldRenderLayer : public RenderLayer
 {
 private:
-    World& world;
-    std::unordered_map<unsigned long long, BlockTessellationCache*> chunkTTCache;
+    World &world;
+    std::unordered_map<unsigned long long, BlockTessellationCache *> chunkTTCache;
 public:
-    WorldRenderLayer(RenderEngine&, World&);
+    WorldRenderLayer(RenderEngine &, World &);
+
     ~WorldRenderLayer();
+
 public:
     void renderTick() override;
 };
