@@ -3,12 +3,12 @@
 
 #include "../Block.h"
 
-class BlockMannager;
+class BlockManager;
 
 class AirBlock : public Block
 {
 public:
-    explicit AirBlock(BlockMannager &);
+    explicit AirBlock(BlockManager &mgr);
 
     ~AirBlock() override;
 

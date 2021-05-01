@@ -3,13 +3,13 @@
 
 #include <string>
 
-class BlockMannager;
+class BlockManager;
 class Block
 {
 protected:
     const std::string id;
 public:
-    Block(BlockMannager&, std::string id);
+    Block(BlockManager&, std::string id);
     virtual ~Block();
     virtual bool isDestroyable() const;
     virtual bool isSolid() const;

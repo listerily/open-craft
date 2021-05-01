@@ -33,7 +33,6 @@ Block *BlockManager::lookup(const std::string & id) const
 template<typename BlockType, typename...Args>
 void BlockManager::registerBlock(Args&&... args)
 {
-    //TODO: compilation error
-//    auto* newBlock = new BlockType(std::forward<Args>(args)...);
-//    lookupMap[newBlock->getID()] = newBlock;
+    auto* newBlock = new BlockType(args...);
+    lookupMap[newBlock->getID()] = newBlock;
 }

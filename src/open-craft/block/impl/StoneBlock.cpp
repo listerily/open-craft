@@ -15,7 +15,7 @@ std::string StoneBlock::getDescription() const
     return "display/block/description/stone";
 }
 
-StoneBlock::StoneBlock(BlockMannager & mgr) : Block(mgr, "block/stone")
+StoneBlock::StoneBlock(BlockManager & mgr) : Block(mgr, "block/stone")
 {
 
 }

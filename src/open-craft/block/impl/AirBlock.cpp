@@ -1,6 +1,7 @@
+#include <open-craft/block/BlockManager.h>
 #include "AirBlock.h"
 
-AirBlock::AirBlock(BlockMannager& mgr) : Block(mgr, "block/air")
+AirBlock::AirBlock(BlockManager &mgr) : Block(mgr, "block/air")
 {
 
 }
